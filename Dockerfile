@@ -9,12 +9,15 @@ RUN ln -snf /usr/share/zoneinfo/$TIMEZONE /etc/localtime
 RUN echo $TIMEZONE > /etc/timezone
 
 # install nodejs
-RUN apk add --no-cache python-software-properties nodejs
+RUN apk add --no-cache -t deps curl python-software-properties nodejs
 
 #install php ext lib
 RUN apk add docker-php-ext-configure --with-zlib-dir=/usr \
     && docker-php-ext-install mbstring opcache pdo pdo_mysql mysqli iconv mcrypt intl curl zip 
-
+    
+RUN apk del --purge deps \
+ && rm /var/cache/apk/*
+ 
 RUN curl -sL https://deb.nodesource.com/setup_7.x | bash -
 RUN npm install --global gulp gulp-cli
 
