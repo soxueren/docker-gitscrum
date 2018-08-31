@@ -12,10 +12,9 @@ RUN echo $TIMEZONE > /etc/timezone
 RUN apk add --no-cache -t deps curl nodejs git
 
 #install php ext lib
-RUN docker-php-ext-install mbstring opcache pdo pdo_mysql mysqli iconv mcrypt intl curl zip 
-    
-RUN apk del --purge deps \
-    && rm /var/cache/apk/*
+RUN docker-php-ext-install mbstring opcache pdo pdo_mysql mysqli iconv intl zip 
+
+#RUN docker-php-ext-install mcrypt
  
 RUN curl -sL https://deb.nodesource.com/setup_7.x | bash -
 RUN npm install --global gulp gulp-cli
@@ -30,6 +29,7 @@ RUN pecl install xdebug \
     && sed -i '1 a xdebug.profiler_enable=1' /usr/local/etc/php/conf.d/docker-php-ext-xdebug.ini \
     && sed -i '1 a xdebug.profiler_output_dir=/var/log/xdebug' /usr/local/etc/php/conf.d/docker-php-ext-xdebug.ini \
     && sed -i '1 a xdebug.idekey=PHPSTORM' /usr/local/etc/php/conf.d/docker-php-ext-xdebug.ini
+    
 
 # Install Composer
 RUN curl -sS https://getcomposer.org/installer | php -- --install-dir=/usr/local/bin --filename=composer
@@ -38,6 +38,8 @@ RUN curl -sS https://getcomposer.org/installer | php -- --install-dir=/usr/local
 RUN curl -L https://github.com/FriendsOfPHP/PHP-CS-Fixer/releases/download/v2.0.0/php-cs-fixer.phar -o /usr/local/bin/php-cs-fixer
 RUN chmod a+x /usr/local/bin/php-cs-fixer
 
+RUN apk del --purge deps \
+    && rm /var/cache/apk/*
 # Install laravel-gitscrum
 RUN git clone git@github.com:GitScrum-Community/laravel-gitscrum.git \
     && cd laravel-gitscrum \
