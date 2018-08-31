@@ -19,6 +19,19 @@ spec:
         ports:
         - name: gitscrum-default
           containerPort: 9000
+        env:
+         - name: "DB_CONNECTION"
+           value: "mysql"          
+         - name: "DB_HOST"
+           value: "mysql-gitscrum"
+         - name: "DB_PORT"
+           value: "3306"
+         - name: "DB_DATABASE"
+           value: "develop"
+         - name: "DB_USERNAME"
+           value: "gitscrum"
+         - name: "DB_PASSWORD"
+           value: "123456"
         volumeMounts:
         - name: gitscrum-config
           mountPath: /usr/local/etc/
