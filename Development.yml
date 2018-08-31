@@ -19,10 +19,6 @@ spec:
         ports:
         - name: gitscrum-default
           containerPort: 9000
-          EXPOSE 9200 9000 9090 80
-        env:
-        - name: "SONARQUBE_JDBC_URL"
-          value: "jdbc:postgresql://postgres:5432/sonar"
         volumeMounts:
         - name: gitscrum-config
           mountPath: /usr/local/etc/
