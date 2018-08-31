@@ -4,8 +4,7 @@ LABEL maintainer "Renato Marinho <renato.marinho@s2move.com>"
 
 RUN apt-get update
 
-RUN apt-get install -y npm \
-	git \
+RUN apt-get install -y git \
 	libcurl4-gnutls-dev \
 	libmcrypt-dev  \
 	libicu-dev \
