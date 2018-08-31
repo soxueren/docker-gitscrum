@@ -20,9 +20,7 @@ RUN apk add --no-cache -t deps \
                           unzip 
 
 #install php ext lib
-RUN docker-php-ext-install mbstring opcache pdo pdo_mysql mysqli iconv intl zip 
-
-#RUN docker-php-ext-install mcrypt
+RUN docker-php-ext-install mbstring opcache pdo pdo_mysql mysqli mcrypt iconv intl zip 
  
 RUN curl -sL https://deb.nodesource.com/setup_7.x | bash -
 RUN npm install --global gulp gulp-cli
