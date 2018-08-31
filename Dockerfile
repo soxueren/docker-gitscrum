@@ -9,7 +9,7 @@ RUN ln -snf /usr/share/zoneinfo/$TIMEZONE /etc/localtime
 RUN echo $TIMEZONE > /etc/timezone
 
 # install nodejs
-RUN apk add --no-cache -t deps curl nodejs git
+RUN apk add --no-cache -t deps curl nodejs git libicu-devel
 
 #install php ext lib
 RUN docker-php-ext-install mbstring opcache pdo pdo_mysql mysqli iconv intl zip 
