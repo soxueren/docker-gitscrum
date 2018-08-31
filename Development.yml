@@ -1,0 +1,46 @@
+apiVersion: apps/v1beta2
+kind: Deployment
+metadata:
+  name: sonar
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      name: gitscrum
+  template:
+    metadata:
+      labels:
+        name: gitscrum
+    spec:   
+      containers:
+      - name: gitscrum
+        image: soxueren/gitscrum:latest
+        imagePullPolicy: IfNotPresent 
+        ports:
+        - name: sonar-default
+          containerPort: 9000
+        env:
+        - name: "SONARQUBE_JDBC_URL"
+          value: "jdbc:postgresql://postgres:5432/sonar"
+        volumeMounts:
+        - name: extensions-sonar
+          mountPath: /opt/sonarqube/extensions
+      - name: mysql
+        image: mysql
+        env:
+         - name: "POSTGRES_USER"
+           value: "sonar"
+         - name: "POSTGRES_PASSWORD"
+           value: "sonar"
+        volumeMounts:
+        - name: default-postgres
+          mountPath: /home/postgresql/data   
+      imagePullSecrets:
+      - name: private-registry-key
+      volumes:
+      - name: extensions-sonar
+        persistentVolumeClaim:
+          claimName: sonar-pvc
+      - name: default-postgres
+        persistentVolumeClaim:
+          claimName: sonar-postgres-pvc
