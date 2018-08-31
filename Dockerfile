@@ -12,8 +12,7 @@ RUN echo $TIMEZONE > /etc/timezone
 RUN apk add --no-cache -t deps curl nodejs git
 
 #install php ext lib
-RUN apk add docker-php-ext-configure --with-zlib-dir=/usr \
-    && docker-php-ext-install mbstring opcache pdo pdo_mysql mysqli iconv mcrypt intl curl zip 
+RUN docker-php-ext-install mbstring opcache pdo pdo_mysql mysqli iconv mcrypt intl curl zip 
     
 RUN apk del --purge deps \
     && rm /var/cache/apk/*
