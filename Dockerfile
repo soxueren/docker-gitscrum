@@ -3,7 +3,7 @@ FROM yewill/docker-gitscrum
 
 RUN groupadd www-deploy \
     && useradd www-deploy -g www-deploy -m   
-RUN echo 123456 | passwd --stdin www-deploy 
+
 RUN	chown -R www-deploy:www-deploy /home/www-deploy && \
 	chown -R www-deploy:www-deploy /tmp && \
 	chmod -R 755 /home/www-deploy
