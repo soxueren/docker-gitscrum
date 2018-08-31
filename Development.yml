@@ -22,7 +22,7 @@ spec:
         volumeMounts:
         - name: gitscrum-config
           mountPath: /usr/local/etc/
-      - name: mysql
+      - name: mysql-gitscrum
         image: mysql
         env:
          - name: "MYSQL_ROOT_PASSWORD"
@@ -45,6 +45,8 @@ spec:
           items:
           - key: php-fpm.conf
             path: php-fpm.conf
+          - key: php.ini
+            path: /usr/local/etc/php/php.ini
       - name: default-mysql
         persistentVolumeClaim:
-          claimName: mysql-pvc
+          claimName: mysql-gitscrum-pvc
