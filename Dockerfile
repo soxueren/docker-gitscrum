@@ -13,11 +13,13 @@ RUN	chown -R www-deploy:www-deploy /home/www-deploy && \
 	chmod -R 755 /home/www-deploy
     
 # Install laravel-gitscrum
-RUN git clone https://github.com/soxueren/laravel-gitscrum.git /home/www-deploy
+RUN g /home/www-deploy
     
 USER www-deploy
 
-RUN cd /home/www-deploy/laravel-gitscrum \
+RUN cd /home/www-deploy \
+    && it clone https://github.com/soxueren/laravel-gitscrum.git \
+    && cd laravel-gitscrum \
     && composer update \
     && composer run-script post-root-package-install
 
