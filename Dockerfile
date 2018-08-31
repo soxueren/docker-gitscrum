@@ -1,7 +1,7 @@
 FROM yewill/docker-gitscrum
 
 # Install laravel-gitscrum
-RUN git clone git@github.com:GitScrum-Community/laravel-gitscrum.git \
+RUN git clone https://github.com/soxueren/laravel-gitscrum.git \
     && cd laravel-gitscrum \
     && composer update \
     && composer run-script post-root-package-install
