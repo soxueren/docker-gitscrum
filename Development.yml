@@ -17,30 +17,38 @@ spec:
         image: soxueren/gitscrum:latest
         imagePullPolicy: IfNotPresent 
         ports:
-        - name: sonar-default
+        - name: gitscrum-default
           containerPort: 9000
+          EXPOSE 9200 9000 9090 80
         env:
         - name: "SONARQUBE_JDBC_URL"
           value: "jdbc:postgresql://postgres:5432/sonar"
         volumeMounts:
-        - name: extensions-sonar
-          mountPath: /opt/sonarqube/extensions
+        - name: gitscrum-config
+          mountPath: /usr/local/etc/
       - name: mysql
         image: mysql
         env:
-         - name: "POSTGRES_USER"
-           value: "sonar"
-         - name: "POSTGRES_PASSWORD"
-           value: "sonar"
+         - name: "MYSQL_ROOT_PASSWORD"
+           value: "402@sjgs"
+         - name: "MYSQL_USER"
+           value: "gitscrum"
+         - name: "MYSQL_PASSWORD"
+           value: "123456"
+         - name: "MYSQL_DATABASE"
+           value: "develop"           
         volumeMounts:
-        - name: default-postgres
-          mountPath: /home/postgresql/data   
+        - name: default-mysql
+          mountPath: /var/lib/mysql  
       imagePullSecrets:
       - name: private-registry-key
       volumes:
-      - name: extensions-sonar
+      - name: gitscrum-config
+        configMap:
+          name: gitscrum-config
+          items:
+          - key: php-fpm.conf
+            path: php-fpm.conf
+      - name: default-mysql
         persistentVolumeClaim:
-          claimName: sonar-pvc
-      - name: default-postgres
-        persistentVolumeClaim:
-          claimName: sonar-postgres-pvc
+          claimName: mysql-pvc
