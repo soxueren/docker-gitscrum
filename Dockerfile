@@ -17,6 +17,8 @@ USER www-deploy
 RUN cd /home/www-deploy/laravel-gitscrum \
     && composer update \
     && composer run-script post-root-package-install
+    
+USER root
 
 EXPOSE 9200 9000 9090 80
 
