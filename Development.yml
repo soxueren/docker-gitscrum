@@ -22,6 +22,15 @@ spec:
         volumeMounts:
         - name: gitscrum-config
           mountPath: /usr/local/etc/
+      - name: nginx-gitscrum
+        image: nginx
+        imagePullPolicy: IfNotPresent 
+        ports:
+        - name: nginx-default
+          containerPort: 80
+        volumeMounts:
+        - name: nginx-config
+          mountPath: /etc/nginx/conf.d/
       - name: mysql-gitscrum
         image: mysql
         env:
@@ -47,6 +56,12 @@ spec:
             path: php-fpm.conf
           - key: php.ini
             path: /usr/local/etc/php/php.ini
+      - name: nginx-config
+        configMap:
+          name: nginx-gitscrum-config
+          items:
+          - key: default.conf
+            path: default.conf
       - name: default-mysql
         persistentVolumeClaim:
           claimName: mysql-gitscrum-pvc
