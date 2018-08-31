@@ -16,7 +16,7 @@ RUN apk add docker-php-ext-configure --with-zlib-dir=/usr \
     && docker-php-ext-install mbstring opcache pdo pdo_mysql mysqli iconv mcrypt intl curl zip 
     
 RUN apk del --purge deps \
- && rm /var/cache/apk/*
+    && rm /var/cache/apk/*
  
 RUN curl -sL https://deb.nodesource.com/setup_7.x | bash -
 RUN npm install --global gulp gulp-cli
