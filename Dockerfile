@@ -9,7 +9,7 @@ RUN ln -snf /usr/share/zoneinfo/$TIMEZONE /etc/localtime
 RUN echo $TIMEZONE > /etc/timezone
 
 # install nodejs
-RUN apk add --no-cache -t deps curl nodejs
+RUN apk add --no-cache -t deps curl nodejs git
 
 #install php ext lib
 RUN apk add docker-php-ext-configure --with-zlib-dir=/usr \
