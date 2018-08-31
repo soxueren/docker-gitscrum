@@ -68,12 +68,12 @@ spec:
           - key: php-fpm.conf
             path: php-fpm.conf
           - key: php.ini
-            path: /usr/local/etc/php/php.ini
-      - name: nginx-config
+            path: php.ini
+      - name: gitscrum-config
         configMap:
           name: nginx-gitscrum-config
           items:
-          - key: default.conf
+          - key: server.conf
             path: default.conf
       - name: default-mysql
         persistentVolumeClaim:
