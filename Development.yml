@@ -13,7 +13,7 @@ spec:
         name: gitscrum
     spec:   
       containers:
-      - name: gitscrum
+      - name: phpfpm-gitscrum
         image: soxueren/gitscrum:latest
         imagePullPolicy: IfNotPresent 
         ports:
