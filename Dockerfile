@@ -2,14 +2,16 @@ FROM php:7-fpm-alpine
 
 RUN apk update && apk upgrade
 
-#时区配置
+#set timezone to locale
 ENV TIMEZONE Asia/Shanghai
 RUN apk add tzdata
 RUN ln -snf /usr/share/zoneinfo/$TIMEZONE /etc/localtime
 RUN echo $TIMEZONE > /etc/timezone
 
+# install nodejs
 RUN apk add --no-cache python-software-properties nodejs
 
+#install php ext lib
 RUN apk add docker-php-ext-configure --with-zlib-dir=/usr \
     && docker-php-ext-install mbstring opcache pdo pdo_mysql mysqli iconv mcrypt intl curl zip 
 
