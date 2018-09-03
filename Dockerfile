@@ -6,9 +6,11 @@ RUN groupadd www-data \
 #Install laravel-gitscrum
 RUN git clone https://github.com/soxueren/laravel-gitscrum.git /home/www-data/laravel-gitscrum
 
-RUN	chown -R www-data:www-data /home/www-data && \
-	chown -R www-data:www-data /tmp && \
-	chmod -R 755 /home/www-data
+ADD .env /home/www-data/laravel-gitscrum/
+
+RUN chown -R www-data:www-data /home/www-data && \
+    chown -R www-data:www-data /tmp && \
+    chmod -R 755 /home/www-data
  
 USER www-data
 
