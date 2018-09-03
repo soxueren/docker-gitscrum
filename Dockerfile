@@ -1,6 +1,4 @@
 FROM yewill/docker-gitscrum
-
-RUN useradd www-data -g www-data -m
     
 #Install laravel-gitscrum
 RUN git clone https://github.com/soxueren/laravel-gitscrum.git /var/www/html/laravel-gitscrum
