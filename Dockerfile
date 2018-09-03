@@ -23,6 +23,6 @@ RUN mkdir /var/log/php-fpm
 RUN mkdir /var/log/nginx
 RUN mkdir /var/gitscrum-root
 
-EXPOSE 9200 9000 9090 80
+EXPOSE 9200 9000 9090
 
 CMD ["php-fpm"]
