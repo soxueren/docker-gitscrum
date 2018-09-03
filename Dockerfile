@@ -2,6 +2,8 @@ FROM yewill/docker-gitscrum
 
 
 RUN mkdir /home/www-deploy
+RUN mkdir /var/log/php-fpm
+RUN mkdir /var/log/nginx
 
 #Install laravel-gitscrum
 RUN git clone https://github.com/soxueren/laravel-gitscrum.git /home/www-deploy/laravel-gitscrum
