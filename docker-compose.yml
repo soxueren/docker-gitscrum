@@ -1,10 +1,11 @@
 # PHP
 
 phpfpm-gitscrum:
-  build: .
+  image: soxueren/gitscrum:latest
   restart: always
   environment:
     - DEBUG=1
+    - DB_HOST=localhost
   volumes:
     - ./config/php-fpm.conf:/usr/local/etc/php-fpm.conf
     - ./config/php.ini:/usr/local/etc/php/php.ini
@@ -38,5 +39,5 @@ mysql-gitscrum:
     MYSQL_PASSWORD: 123456
     MYSQL_DATABASE: develop
   volumes:
-    - ./mysql/databases:/var/lib/mysql
+    #- ./mysql/databases:/var/lib/mysql
     - ./log/mysql:/var/log/mysql
