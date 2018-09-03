@@ -1,19 +1,18 @@
 FROM yewill/docker-gitscrum
 
-RUN mkdir /home/www-deploy
-
+RUN groupadd www-data \
+    && useradd www-data -g www-data -m   
+    
 #Install laravel-gitscrum
-RUN git clone https://github.com/soxueren/laravel-gitscrum.git /home/www-deploy/laravel-gitscrum
+RUN git clone https://github.com/soxueren/laravel-gitscrum.git /home/www-data/laravel-gitscrum
 
-RUN groupadd www-deploy \
-    && useradd www-deploy -g www-deploy -m   
-
-RUN	chown -R www-deploy:www-deploy /home/www-deploy && \
-	chown -R www-deploy:www-deploy /tmp && \
-	chmod -R 755 /home/www-deploy
+RUN	chown -R www-data:www-data /home/www-data && \
+	chown -R www-data:www-data /tmp && \
+	chmod -R 755 /home/www-data
  
-USER www-deploy
-RUN cd /home/www-deploy/laravel-gitscrum \
+USER www-data
+
+RUN cd /home/www-data/laravel-gitscrum \
     && composer update \
     && composer run-script post-root-package-install
     
