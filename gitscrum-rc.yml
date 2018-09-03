@@ -48,7 +48,7 @@ spec:
         image: mysql
         env:
          - name: "MYSQL_ROOT_PASSWORD"
-           value: "402@sjgs"
+           value: "123456"
          - name: "MYSQL_USER"
            value: "gitscrum"
          - name: "MYSQL_PASSWORD"
