@@ -7,8 +7,7 @@ RUN git clone https://github.com/soxueren/laravel-gitscrum.git /var/www/html/lar
 
 ADD .env /var/www/html/laravel-gitscrum
 
-RUN chown -R www-data:www-data /home/www-data && \
-    chown -R www-data:www-data /tmp && \
+RUN chown -R www-data:www-data /tmp && \
     chown -R www-data:www-data /var/www/html/ && \
     chmod -R 755 /var/www/html/laravel-gitscrum
  
