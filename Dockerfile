@@ -1,7 +1,6 @@
 FROM yewill/docker-gitscrum
 
-RUN groupadd www-data \
-    && useradd www-data -g www-data -m 
+RUN useradd www-data -g www-data -m
     
 #Install laravel-gitscrum
 RUN git clone https://github.com/soxueren/laravel-gitscrum.git /var/www/html/laravel-gitscrum
