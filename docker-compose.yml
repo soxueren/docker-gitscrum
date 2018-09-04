@@ -6,7 +6,7 @@ phpfpm-gitscrum:
   restart: always
   environment:
     - DEBUG=1
-    - DB_HOST=localhost
+    - DB_HOST=mysql-gitscrum
   volumes:
     - ./config/php-fpm.conf:/usr/local/etc/php-fpm.conf
     - ./config/php.ini:/usr/local/etc/php/php.ini
