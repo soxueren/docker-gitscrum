@@ -11,9 +11,9 @@ docker pull soxueren/gitscrum:latest
 # laravel-gitscrum php files
 all files for php-fpm in /var/www/html/laravel-gitscrum of soxueren/gitscrum:latest,can copy to nignx
 # migrate database
-cd /var/www/html/laravel-gitscrum
-php artisan migrate
-php artisan db:seed --class=SettingSeeder
+- cd /var/www/html/laravel-gitscrum
+- php artisan migrate
+- php artisan db:seed --class=SettingSeeder
 # How to install Docker Compose
 [Docker Compose](https://docs.docker.com/compose/install/)
 # How to install kubernetes
