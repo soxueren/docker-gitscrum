@@ -1,9 +1,8 @@
 FROM yewill/docker-gitscrum
-
-
     
 #Install laravel-gitscrum
 RUN git clone https://github.com/soxueren/laravel-gitscrum.git /var/www/html/laravel-gitscrum
+#ADD ./www/laravel-gitscrum /var/www/html/laravel-gitscrum
 ADD .env /var/www/html/laravel-gitscrum
 
 RUN mkdir /var/log/php-fpm
