@@ -10,9 +10,11 @@ ADD .env /var/www/html/laravel-gitscrum
 
 RUN mkdir /var/log/php-fpm
 
-RUN chown -R www-data:www-data /tmp && \
+RUN chown -R www-data:www-data /var/www/html && \
+    chmod -R 777 /var/www/html
+	
+RUN chown -R www-deploy:www-deploy /tmp && \
     chmod -R 777 /home/www-deploy && \
-    chmod -R 777 /var/www/html && \
     chmod -R 777 /var/log/php-fpm
     
 #composer run-script    
