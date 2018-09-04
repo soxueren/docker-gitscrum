@@ -6,15 +6,17 @@ You can run the command on your bash to build the containers
 ```
 docker-compose up --build
 ```
+# docker image
 docker pull soxueren/gitscrum:latest
-
-all files for php-fpm in soxueren/gitscrum:latest /var/www/html/laravel-gitscrum
-can copy to nignx dir: /var/www/html/laravel-gitscrum
-
+# laravel-gitscrum php files
+all files for php-fpm in /var/www/html/laravel-gitscrum of soxueren/gitscrum:latest 
+can dir copy to nignx
+# migrate database
+cd /var/www/html/laravel-gitscrum
+php artisan migrate
+php artisan db:seed --class=SettingSeeder
 # How to install Docker Compose
 [Docker Compose](https://docs.docker.com/compose/install/)
-
-
 # How to install kubernetes
 ## create configmap
 kubectl create configmap gitscrum-config --from-file=./config/ --namespace=test
