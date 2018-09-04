@@ -7,10 +7,7 @@ RUN git clone https://github.com/soxueren/laravel-gitscrum.git /var/www/html/lar
 ADD .env /var/www/html/laravel-gitscrum
 
 RUN mkdir /var/log/php-fpm
-
-#add user
-RUN groupadd www-data && \
-    useradd -m -r www-data -g www-data
+RUN mkdir /home/www-data
     
 RUN chown -R www-data:www-data /var/www/html && \    
 	chmod -R 777 /home/www-data && \
