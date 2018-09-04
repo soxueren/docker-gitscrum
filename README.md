@@ -9,8 +9,7 @@ docker-compose up --build
 # docker image
 docker pull soxueren/gitscrum:latest
 # laravel-gitscrum php files
-all files for php-fpm in /var/www/html/laravel-gitscrum of soxueren/gitscrum:latest 
-can dir copy to nignx
+all files for php-fpm in /var/www/html/laravel-gitscrum of soxueren/gitscrum:latest,can dir copy to nignx
 # migrate database
 cd /var/www/html/laravel-gitscrum
 php artisan migrate
