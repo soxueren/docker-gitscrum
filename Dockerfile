@@ -7,7 +7,7 @@ ADD .env /var/www/html/laravel-gitscrum
 
 RUN mkdir /var/log/php-fpm
 RUN mkdir /home/www-data
-    
+
 RUN chown -R www-data:www-data /var/www/html && \    
 	chmod -R 777 /home/www-data && \
 	chmod -R 777 /var/www/html
@@ -27,6 +27,8 @@ RUN cd /var/www/html/laravel-gitscrum \
     && composer update \
     && composer run-script post-root-package-install
     
+RUN cp /var/www/html/laravel-gitscrum /home/www-data/laravel-gitscrum 
+
 USER root
 
 EXPOSE 9200 9000 9090
